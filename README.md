@@ -30,7 +30,27 @@ STEP-8: Repeat the above steps to generate the entire cipher text.
 
 
 ## PROGRAM
+```
+ #include <stdio.h>
+ #include <string.h>
+ void vigenereCipher(char *text, char *key, int decrypt) {
+ int len = strlen(text), keyLen = strlen(key);
+ for (int i = 0; i < len; i++) {
+ int shift = key[i % keyLen]- 'A';
+ text[i] = 'A' + (text[i]- 'A' + (decrypt ? 26- shift : shift)) % 26;
+ }
+ }
+ int main() {
+ char text[] = "PRAMISHA", key[] = "KEY";
+ vigenereCipher(text, key, 0);
+ printf("Encrypted Message: %s\n", text);
+ vigenereCipher(text, key, 1);
+ printf("Decrypted Message: %s\n", text);
+ return 0;
+ }
+```
+# OUTPUT
+<img width="1626" height="743" alt="Screenshot 2026-03-21 125216" src="https://github.com/user-attachments/assets/30de1803-c6bb-4861-bd21-bd76bcd1e045" />
 
-## OUTPUT
-
-## RESULT
+# RESULT
+The program is executed successfully.
